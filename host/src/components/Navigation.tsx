@@ -1,4 +1,5 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 import type { AppId, NavigationItem } from '../types/index.ts';
 import './Navigation.css';
 
@@ -22,13 +23,14 @@ const Navigation: React.FC<NavigationProps> = ({ activeApp, onAppChange }) => {
         <ul className="nav-menu">
           {navigationItems.map((item) => (
             <li key={item.id} className="nav-item">
-              <button
-                className={`nav-link ${activeApp === item.id ? 'active' : ''}`}
+              <NavLink
+                to={item.path}
+                className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
                 onClick={() => onAppChange(item.id)}
                 aria-current={activeApp === item.id ? 'page' : undefined}
               >
                 {item.label}
-              </button>
+              </NavLink>
             </li>
           ))}
         </ul>

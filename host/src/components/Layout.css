@@ -39,7 +39,10 @@
 }
 
 .dynamic-badge {
-  display: inline-block;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: white;
   padding: 0.5rem 1rem;
@@ -47,6 +50,14 @@
   font-size: 0.875rem;
   font-weight: 600;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.route-indicator {
+  background: rgba(255, 255, 255, 0.2);
+  padding: 0.25rem 0.5rem;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-family: 'Courier New', monospace;
 }
 
 /* Loading state styles */

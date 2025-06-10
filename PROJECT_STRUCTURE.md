@@ -47,13 +47,23 @@ npm run preview
 - **Ports**: Host (5080), Remote (5081)
 - **Federation URL**: `http://localhost:5081/assets/remoteEntry.js`
 
+## URL Routing
+
+- **`/` or `/app1`**: Federated Task Manager (Module Federation)
+- **`/app2`**: User Management System (Local Dynamic Import)
+- **`/*`**: 404 Not Found page with navigation links
+
 ## Key Features
 
+- ✅ **URL-Based Navigation**: React Router v6 integration with proper routing
 - ✅ **State Persistence**: Components maintain state across navigation
 - ✅ **Error Recovery**: Retry mechanism for federation failures
 - ✅ **Independent Deployment**: Each micro-frontend can be deployed separately
 - ✅ **Shared Dependencies**: React 19.1 shared between applications
 - ✅ **Professional Fallbacks**: Clean error handling with FederationFallback component
+- ✅ **Deep Linking**: Direct URL access to any micro-frontend
+- ✅ **Browser History**: Back/forward button support
+- ✅ **404 Handling**: Professional not found page for invalid routes
 
 ## Development Workflow
 

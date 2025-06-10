@@ -1,0 +1,239 @@
+.not-found {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
+  border-radius: 12px;
+  color: white;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  border: 3px solid #ff8e8e;
+}
+
+.not-found-container {
+  text-align: center;
+}
+
+.not-found-icon {
+  font-size: 4rem;
+  margin-bottom: 1.5rem;
+  opacity: 0.9;
+}
+
+.not-found-content h1 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.not-found-content h2 {
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+  opacity: 0.9;
+  font-weight: 400;
+}
+
+.not-found-message {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.primary-message {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.secondary-message {
+  font-size: 1rem;
+  opacity: 0.9;
+  margin: 0;
+}
+
+.available-routes {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.available-routes h3 {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  color: #ffd700;
+}
+
+.route-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.route-link {
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.3s ease;
+}
+
+.route-link:hover {
+  transform: translateY(-2px);
+}
+
+.route-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 1rem;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+}
+
+.route-item:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+.route-icon {
+  font-size: 1.5rem;
+}
+
+.route-details {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+}
+
+.route-path {
+  font-family: 'Courier New', monospace;
+  font-weight: 600;
+  font-size: 1.1rem;
+  margin-bottom: 0.25rem;
+}
+
+.route-description {
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+.not-found-actions {
+  margin-bottom: 2rem;
+}
+
+.home-button {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  text-decoration: none;
+  display: inline-block;
+}
+
+.home-button:hover {
+  background: rgba(255, 255, 255, 0.3);
+  border-color: rgba(255, 255, 255, 0.5);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  color: white;
+  text-decoration: none;
+}
+
+.not-found-info {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.info-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+  font-size: 0.95rem;
+}
+
+.info-item:last-child {
+  margin-bottom: 0;
+}
+
+.info-label {
+  font-weight: 600;
+  opacity: 0.9;
+}
+
+.info-value {
+  font-family: 'Courier New', monospace;
+  background: rgba(0, 0, 0, 0.2);
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.85rem;
+}
+
+.not-found-footer {
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  padding-top: 1.5rem;
+  opacity: 0.8;
+}
+
+.not-found-footer p {
+  margin: 0.5rem 0;
+  font-size: 0.9rem;
+  text-align: left;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .not-found {
+    padding: 1.5rem;
+    margin: 1rem;
+  }
+  
+  .not-found-content h1 {
+    font-size: 2rem;
+  }
+  
+  .not-found-content h2 {
+    font-size: 1.2rem;
+  }
+  
+  .not-found-icon {
+    font-size: 3rem;
+  }
+  
+  .route-item {
+    flex-direction: column;
+    text-align: center;
+    gap: 0.5rem;
+  }
+  
+  .route-details {
+    align-items: center;
+  }
+  
+  .info-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.25rem;
+  }
+  
+  .home-button {
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+  }
+}
