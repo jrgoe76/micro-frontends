@@ -37,3 +37,10 @@ export interface ComponentCache {
 }
 
 export type MicroFrontendLoader = () => Promise<DynamicModule>;
+
+// Types for Module Federation
+export interface FederatedModule {
+  default: React.ComponentType;
+}
+
+export type FederatedLoader = () => Promise<FederatedModule>;

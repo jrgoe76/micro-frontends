@@ -21,11 +21,15 @@ export const useMicroFrontendCache = () => {
    * Load a micro-frontend component and cache it
    */
   const loadComponent = useCallback(async (
-    appId: AppId, 
+    appId: AppId,
     loader: MicroFrontendLoader
   ): Promise<void> => {
-    // If already cached and loaded, no need to reload
-    if (componentCache[appId]?.isLoaded) {
+    console.log(`🔄 Loading micro-frontend ${appId}...`);
+
+    // Check if already loaded to prevent duplicate loading
+    const currentCache = componentCache[appId];
+    if (currentCache?.isLoaded) {
+      console.log(`✅ ${appId} already loaded, skipping`);
       return;
     }
 
@@ -35,7 +39,7 @@ export const useMicroFrontendCache = () => {
     try {
       // Perform dynamic import
       const module = await loader();
-      
+
       // Cache the component
       setComponentCache(prev => ({
         ...prev,
@@ -49,7 +53,7 @@ export const useMicroFrontendCache = () => {
       console.log(`✅ Micro-frontend ${appId} loaded and cached`);
     } catch (error) {
       console.error(`❌ Failed to load micro-frontend ${appId}:`, error);
-      
+
       // Cache the error state
       setComponentCache(prev => ({
         ...prev,

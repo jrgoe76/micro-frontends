@@ -1,29 +1,32 @@
 import React from 'react';
-import './App1.css';
+import './TaskManager.css';
 
-// This represents a micro-frontend application
-const App1: React.FC = () => {
+// This is our federated micro-frontend component
+const TaskManager: React.FC = () => {
   const [count, setCount] = React.useState(0);
   const [todos, setTodos] = React.useState<string[]>([
-    'Learn Dynamic Module Loading',
-    'Implement Module Federation',
-    'Add React Router'
+    'Learn Module Federation',
+    'Implement Remote Components',
+    'Test Cross-App Communication'
   ]);
 
   const addTodo = () => {
-    const newTodo = `New task ${Date.now()}`;
+    const newTodo = `Federated task ${Date.now()}`;
     setTodos([...todos, newTodo]);
   };
 
   return (
-    <div className="app1-container">
-      <div className="app1-header">
-        <h1>📋 Task Manager App</h1>
-        <p>This is a dynamically loaded micro-frontend application</p>
+    <div className="task-manager-container">
+      <div className="task-manager-header">
+        <h1>🌐 Federated Task Manager</h1>
+        <p>This component is loaded via Module Federation from a remote application</p>
+        <div className="federation-badge">
+          Remote App (Port 5081)
+        </div>
       </div>
       
-      <div className="app1-content">
-        <div className="app1-stats">
+      <div className="task-manager-content">
+        <div className="task-manager-stats">
           <div className="stat-card">
             <h3>Button Clicks</h3>
             <div className="stat-number">{count}</div>
@@ -47,8 +50,8 @@ const App1: React.FC = () => {
           </div>
         </div>
 
-        <div className="app1-todos">
-          <h3>📝 Task List</h3>
+        <div className="task-manager-todos">
+          <h3>📝 Federated Task List</h3>
           <ul className="todo-list">
             {todos.map((todo, index) => (
               <li key={index} className="todo-item">
@@ -66,11 +69,12 @@ const App1: React.FC = () => {
         </div>
       </div>
       
-      <div className="app1-footer">
-        <p>🚀 Loaded dynamically via import() statement</p>
+      <div className="task-manager-footer">
+        <p>🚀 Loaded via Module Federation from remote-app1 (localhost:5081)</p>
+        <p>✨ Shared React 19.1 instance with host application</p>
       </div>
     </div>
   );
 };
 
-export default App1;
+export default TaskManager;
