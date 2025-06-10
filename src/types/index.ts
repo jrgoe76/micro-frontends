@@ -14,3 +14,26 @@ export interface NavigationItem {
   label: string;
   path: string;
 }
+
+// Types for dynamic module loading
+export interface DynamicModule {
+  default: React.ComponentType;
+}
+
+export interface LoadingState {
+  isLoading: boolean;
+  error: string | null;
+  component: React.ComponentType | null;
+}
+
+export interface CachedComponent {
+  component: React.ComponentType;
+  isLoaded: boolean;
+  error: string | null;
+}
+
+export interface ComponentCache {
+  [key: string]: CachedComponent;
+}
+
+export type MicroFrontendLoader = () => Promise<DynamicModule>;
