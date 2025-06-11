@@ -10,7 +10,7 @@ interface NavigationProps {
 
 const Navigation: React.FC<NavigationProps> = ({ activeApp, onAppChange }) => {
   const navigationItems: NavigationItem[] = [
-    { id: 'app1', label: 'App 1', path: '/app1' },
+    { id: 'tasks', label: 'Tasks', path: '/tasks' },
     { id: 'users', label: 'Users', path: '/users' }
   ];
 
@@ -18,7 +18,7 @@ const Navigation: React.FC<NavigationProps> = ({ activeApp, onAppChange }) => {
     <nav className="navigation">
       <div className="nav-container">
         <div className="nav-brand">
-          <h2>Micro-Frontend Host</h2>
+          <h2>Micro-Frontends</h2>
         </div>
         <ul className="nav-menu">
           {navigationItems.map((item) => (

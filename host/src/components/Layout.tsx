@@ -7,21 +7,21 @@ import './Layout.css';
 
 const Layout: React.FC = () => {
   // State to manage which micro-frontend app is currently active
-  const [activeApp, setActiveApp] = useState<AppId>('app1');
+  const [activeApp, setActiveApp] = useState<AppId>('tasks');
 
   // Memoize the loader functions to prevent recreation on every render
   const microFrontendLoaders = useMemo<Record<AppId, MicroFrontendLoader>>(() => ({
-    // Use Module Federation for App1 (federated remote component)
-    app1: () => {
-      console.log('🌐 Attempting to load remote-app1/TaskManager via Module Federation...');
-      return import('remote-app1/TaskManager')
+    // Use Module Federation for Tasks (federated remote component)
+    tasks: () => {
+      console.log('🌐 Attempting to load tasks/Tasks via Module Federation...');
+      return import('tasks/Tasks')
         .then((module) => {
-          console.log('✅ Module Federation successful for App1:', module);
+          console.log('✅ Module Federation successful for Tasks:', module);
           return module;
         })
         .catch((error) => {
           // Let the error propagate to show FederationFallback
-          console.error('❌ Module Federation failed for App1:', error);
+          console.error('❌ Module Federation failed for Tasks:', error);
           throw error; // Re-throw to trigger error state
         });
     },
@@ -108,8 +108,8 @@ const Layout: React.FC = () => {
         {/* Error state for current app */}
         {cachedComponent?.error && (
           <>
-            {activeApp === 'app1' ? (
-              // Use FederationFallback for App1 (Module Federation failures)
+            {activeApp === 'tasks' ? (
+              // Use FederationFallback for Tasks (Module Federation failures)
               <FederationFallback
                 appName="Federated Task Manager"
                 error={cachedComponent.error}
@@ -140,26 +140,26 @@ const Layout: React.FC = () => {
           {!isCurrentAppLoading && !cachedComponent?.error && (
             <div className="dynamic-app-header">
               <div className="dynamic-badge">
-                {activeApp === 'app1' ? '🌐 Module Federation' : '📦 Dynamic Import'}: {activeApp.toUpperCase()}
+                {activeApp === 'tasks' ? '🌐 Module Federation' : '📦 Dynamic Import'}: {activeApp.toUpperCase()}
                 {cachedComponent?.isLoaded && ' (State Preserved)'}
               </div>
             </div>
           )}
 
-          {/* App1 - always render if loaded to preserve state */}
+          {/* Tasks - always render if loaded to preserve state */}
           {(() => {
-            const app1Cache = getCachedComponent('app1');
-            if (app1Cache?.isLoaded && app1Cache.component) {
-              const App1Component = app1Cache.component;
-              const shouldShow = activeApp === 'app1' && !app1Cache.error && !isLoading('app1');
+            const tasksCache = getCachedComponent('tasks');
+            if (tasksCache?.isLoaded && tasksCache.component) {
+              const TasksComponent = tasksCache.component;
+              const shouldShow = activeApp === 'tasks' && !tasksCache.error && !isLoading('tasks');
               return (
                 <div
-                  key="app1-container"
+                  key="tasks-container"
                   style={{
                     display: shouldShow ? 'block' : 'none'
                   }}
                 >
-                  <App1Component />
+                  <TasksComponent />
                 </div>
               );
             }

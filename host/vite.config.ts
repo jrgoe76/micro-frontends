@@ -9,8 +9,8 @@ export default defineConfig({
     federation({
       name: 'micro-frontend-host',
       remotes: {
-        // Remote micro-frontend - consistent port 5081 for both dev and prod
-        'remote-app1': 'http://localhost:5081/assets/remoteEntry.js',
+        // Tasks micro-frontend - consistent port 5081 for both dev and prod
+        'tasks': 'http://localhost:5081/assets/remoteEntry.js',
       },
       shared: {
         // Share React and React-DOM between host and remotes

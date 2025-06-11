@@ -1,6 +1,6 @@
 // TypeScript declarations for Module Federation
-declare module 'remote-app1/TaskManager' {
+declare module 'tasks/Tasks' {
   import type { ComponentType } from 'react';
-  const TaskManager: ComponentType;
-  export default TaskManager;
+  const Tasks: ComponentType;
+  export default Tasks;
 }

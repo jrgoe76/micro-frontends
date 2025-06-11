@@ -8,8 +8,8 @@ interface SkeletonLoaderProps {
 }
 
 const SkeletonLoader: React.FC<SkeletonLoaderProps> = ({ appId, appName }) => {
-  if (appId === 'app1') {
-    // Skeleton for TaskManager (App1)
+  if (appId === 'tasks') {
+    // Skeleton for TaskManager (Tasks)
     return (
       <div className="skeleton-loader" aria-label={`Loading ${appName} skeleton`}>
         <div className="skeleton-container">

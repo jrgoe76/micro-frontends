@@ -7,11 +7,11 @@ export default defineConfig({
   plugins: [
     react(),
     federation({
-      name: 'remote-app1',
+      name: 'tasks',
       filename: 'remoteEntry.js',
       exposes: {
-        // Expose our Task Manager component
-        './TaskManager': './src/TaskManager.tsx'
+        // Expose our Tasks component
+        './Tasks': './src/Tasks.tsx'
       },
       shared: {
         // Share React and React-DOM with the host

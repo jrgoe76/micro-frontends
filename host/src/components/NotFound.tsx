@@ -26,11 +26,11 @@ const NotFound: React.FC = () => {
           <div className="available-routes">
             <h3>Available Routes:</h3>
             <div className="route-list">
-              <Link to="/app1" className="route-link">
+              <Link to="/tasks" className="route-link">
                 <div className="route-item">
                   <span className="route-icon">🌐</span>
                   <div className="route-details">
-                    <span className="route-path">/app1</span>
+                    <span className="route-path">/tasks</span>
                     <span className="route-description">Federated Task Manager</span>
                   </div>
                 </div>
@@ -49,8 +49,8 @@ const NotFound: React.FC = () => {
           </div>
 
           <div className="not-found-actions">
-            <Link to="/app1" className="home-button">
-              🏠 Go to Home (App1)
+            <Link to="/tasks" className="home-button">
+              🏠 Go to Home (Tasks)
             </Link>
           </div>
 
@@ -61,7 +61,7 @@ const NotFound: React.FC = () => {
             </div>
             <div className="info-item">
               <span className="info-label">Host Application:</span>
-              <span className="info-value">Micro-Frontend Host</span>
+              <span className="info-value">Micro-Frontends</span>
             </div>
           </div>
         </div>

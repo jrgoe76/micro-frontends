@@ -16,11 +16,11 @@ This project has been reorganized to better separate the host application from r
 │   ├── vite.config.ts              # Host Vite configuration
 │   ├── tsconfig.json               # Host TypeScript config
 │   └── index.html                  # Host HTML template
-├── remote-app1/                    # Remote Micro-Frontend 1
-│   ├── src/                        # Remote app source code
-│   ├── package.json                # Remote app dependencies
-│   ├── vite.config.ts              # Remote app Vite configuration
-│   └── tsconfig.json               # Remote app TypeScript config
+├── tasks/                          # Tasks Micro-Frontend
+│   ├── src/                        # Tasks app source code
+│   ├── package.json                # Tasks app dependencies
+│   ├── vite.config.ts              # Tasks app Vite configuration
+│   └── tsconfig.json               # Tasks app TypeScript config
 └── PROJECT_STRUCTURE.md            # This file
 ```
 
@@ -33,9 +33,9 @@ npm install
 npm run dev
 ```
 
-### Remote Application (Port 5081)
+### Tasks Application (Port 5081)
 ```bash
-cd remote-app1
+cd tasks
 npm run build
 npm run preview
 ```
@@ -43,13 +43,13 @@ npm run preview
 ## Module Federation Configuration
 
 - **Host**: Consumes remote micro-frontends via Module Federation
-- **Remote**: Exposes TaskManager component for federation
-- **Ports**: Host (5080), Remote (5081)
+- **Tasks**: Exposes Tasks component for federation
+- **Ports**: Host (5080), Tasks (5081)
 - **Federation URL**: `http://localhost:5081/assets/remoteEntry.js`
 
 ## URL Routing
 
-- **`/` or `/app1`**: Federated Task Manager (Module Federation)
+- **`/` or `/tasks`**: Federated Task Manager (Module Federation)
 - **`/users`**: User Management System (Local Dynamic Import)
 - **`/*`**: 404 Not Found page with navigation links
 

@@ -1,6 +1,6 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import TaskManager from './TaskManager.tsx'
+import Tasks from './Tasks.tsx'
 import './index.css'
 
 createRoot(document.getElementById('root')!).render(
@@ -18,7 +18,7 @@ createRoot(document.getElementById('root')!).render(
       </header>
 
       <main className="standalone-content">
-        <TaskManager />
+        <Tasks />
       </main>
 
       <footer className="standalone-footer">

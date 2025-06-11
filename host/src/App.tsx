@@ -8,11 +8,11 @@ const App: React.FC = () => {
   return (
     <Router>
       <Routes>
-        {/* Root path redirects to app1 */}
-        <Route path="/" element={<Navigate to="/app1" replace />} />
+        {/* Root path redirects to tasks */}
+        <Route path="/" element={<Navigate to="/tasks" replace />} />
 
         {/* Micro-frontend routes */}
-        <Route path="/app1" element={<RouterLayout />} />
+        <Route path="/tasks" element={<RouterLayout />} />
         <Route path="/users" element={<RouterLayout />} />
 
         {/* Catch-all route for 404 */}

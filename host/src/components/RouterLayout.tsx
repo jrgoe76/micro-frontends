@@ -14,30 +14,30 @@ const RouterLayout: React.FC = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  // Determine active app from URL, default to app1 for root path
+  // Determine active app from URL, default to tasks for root path
   const activeApp: AppId = useMemo(() => {
-    if (location.pathname === '/' || location.pathname === '/app1' || appId === 'app1') {
-      return 'app1';
+    if (location.pathname === '/' || location.pathname === '/tasks' || appId === 'tasks') {
+      return 'tasks';
     } else if (location.pathname === '/users' || appId === 'users') {
       return 'users';
     }
-    // Default to app1 for any unrecognized routes
-    return 'app1';
+    // Default to tasks for any unrecognized routes
+    return 'tasks';
   }, [location.pathname, appId]);
 
   // Memoize the loader functions to prevent recreation on every render
   const microFrontendLoaders = useMemo<Record<AppId, MicroFrontendLoader>>(() => ({
-    // Use Module Federation for App1 (federated remote component)
-    app1: () => {
-      console.log('🌐 Attempting to load remote-app1/TaskManager via Module Federation...');
-      return import('remote-app1/TaskManager')
+    // Use Module Federation for Tasks (federated remote component)
+    tasks: () => {
+      console.log('🌐 Attempting to load tasks/Tasks via Module Federation...');
+      return import('tasks/Tasks')
         .then((module) => {
-          console.log('✅ Module Federation successful for App1:', module);
+          console.log('✅ Module Federation successful for Tasks:', module);
           return module;
         })
         .catch((error) => {
           // Let the error propagate to show FederationFallback
-          console.error('❌ Module Federation failed for App1:', error);
+          console.error('❌ Module Federation failed for Tasks:', error);
           throw error; // Re-throw to trigger error state
         });
     },
@@ -97,8 +97,8 @@ const RouterLayout: React.FC = () => {
   // Handle app navigation via React Router
   const handleAppChange = useCallback((appId: AppId) => {
     console.log(`🧭 Navigating to ${appId} via React Router`);
-    if (appId === 'app1') {
-      navigate('/app1');
+    if (appId === 'tasks') {
+      navigate('/tasks');
     } else if (appId === 'users') {
       navigate('/users');
     }
@@ -143,8 +143,8 @@ const RouterLayout: React.FC = () => {
             {isInPhase(activeApp, 'enhanced') && (
               <EnhancedLoader
                 appId={activeApp}
-                appName={activeApp === 'app1' ? 'Federated Task Manager' : 'User Management System'}
-                loadingType={activeApp === 'app1' ? 'federation' : 'local'}
+                appName={activeApp === 'tasks' ? 'Federated Task Manager' : 'User Management System'}
+                loadingType={activeApp === 'tasks' ? 'federation' : 'local'}
                 onTimeout={() => timeoutLoading(activeApp)}
               />
             )}
@@ -152,7 +152,7 @@ const RouterLayout: React.FC = () => {
             {isInPhase(activeApp, 'skeleton') && (
               <SkeletonLoader
                 appId={activeApp}
-                appName={activeApp === 'app1' ? 'Federated Task Manager' : 'User Management System'}
+                appName={activeApp === 'tasks' ? 'Federated Task Manager' : 'User Management System'}
               />
             )}
 
@@ -186,7 +186,7 @@ const RouterLayout: React.FC = () => {
               </button>
               <div className="timeout-metrics">
                 <p><strong>Loading Time:</strong> {getLoadingMetrics(activeApp)?.totalTime ? (getLoadingMetrics(activeApp)!.totalTime / 1000).toFixed(1) : '0'}s</p>
-                <p><strong>Type:</strong> {activeApp === 'app1' ? 'Module Federation' : 'Local Dynamic Import'}</p>
+                <p><strong>Type:</strong> {activeApp === 'tasks' ? 'Module Federation' : 'Local Dynamic Import'}</p>
               </div>
             </div>
           </div>
@@ -195,8 +195,8 @@ const RouterLayout: React.FC = () => {
         {/* Error state for current app */}
         {cachedComponent?.error && !isInPhase(activeApp, 'timeout') && (
           <>
-            {activeApp === 'app1' ? (
-              // Use FederationFallback for App1 (Module Federation failures)
+            {activeApp === 'tasks' ? (
+              // Use FederationFallback for Tasks (Module Federation failures)
               <FederationFallback
                 appName="Federated Task Manager"
                 error={cachedComponent.error}
@@ -227,27 +227,27 @@ const RouterLayout: React.FC = () => {
           {!isCurrentAppLoading && !cachedComponent?.error && (
             <div className="dynamic-app-header">
               <div className="dynamic-badge">
-                {activeApp === 'app1' ? '🌐 Module Federation' : '📦 Dynamic Import'}: {activeApp.toUpperCase()}
+                {activeApp === 'tasks' ? '🌐 Module Federation' : '📦 Dynamic Import'}: {activeApp.toUpperCase()}
                 {cachedComponent?.isLoaded && ' (State Preserved)'}
                 <span className="route-indicator">📍 Route: {location.pathname}</span>
               </div>
             </div>
           )}
 
-          {/* App1 - always render if loaded to preserve state */}
+          {/* Tasks - always render if loaded to preserve state */}
           {(() => {
-            const app1Cache = getCachedComponent('app1');
-            if (app1Cache?.isLoaded && app1Cache.component) {
-              const App1Component = app1Cache.component;
-              const shouldShow = activeApp === 'app1' && !app1Cache.error && !isLoading('app1');
+            const tasksCache = getCachedComponent('tasks');
+            if (tasksCache?.isLoaded && tasksCache.component) {
+              const TasksComponent = tasksCache.component;
+              const shouldShow = activeApp === 'tasks' && !tasksCache.error && !isLoading('tasks');
               return (
                 <div
-                  key="app1-container"
+                  key="tasks-container"
                   style={{
                     display: shouldShow ? 'block' : 'none'
                   }}
                 >
-                  <App1Component />
+                  <TasksComponent />
                 </div>
               );
             }

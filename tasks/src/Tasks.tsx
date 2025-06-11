@@ -1,8 +1,8 @@
 import React from 'react';
-import './TaskManager.css';
+import './Tasks.css';
 
 // This is our federated micro-frontend component
-const TaskManager: React.FC = () => {
+const Tasks: React.FC = () => {
   const [count, setCount] = React.useState(0);
   const [todos, setTodos] = React.useState<string[]>([
     'Learn Module Federation',
@@ -70,11 +70,11 @@ const TaskManager: React.FC = () => {
       </div>
       
       <div className="task-manager-footer">
-        <p>🚀 Loaded via Module Federation from remote-app1 (localhost:5081)</p>
+        <p>🚀 Loaded via Module Federation from tasks (localhost:5081)</p>
         <p>✨ Shared React 19.1 instance with host application</p>
       </div>
     </div>
   );
 };
 
-export default TaskManager;
+export default Tasks;
