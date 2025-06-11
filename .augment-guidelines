@@ -1,0 +1,7 @@
+- Use TypeScript naming conventions
+- Use React hooks and functional components
+- Use React Router for navigation
+- Use Vite for building and serving
+- Use Module Federation for micro-frontends
+- Use ESLint for linting
+- Use Prettier for formatting
