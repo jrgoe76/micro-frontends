@@ -1,67 +1,67 @@
-/* Global styles for remote-app1 standalone mode */
-:root {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-  
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
+/* Import Unified Design System */
+@import './shared-design-system.css';
+@import './micro-frontend-components.css';
 
-* {
-  box-sizing: border-box;
-}
-
-body {
-  margin: 0;
-  padding: 0;
-  background-color: #f8f9fa;
-  color: #333;
-  min-height: 100vh;
-}
-
+/* Tasks Application Specific Styles */
 #root {
   min-height: 100vh;
 }
 
-/* Reset default styles */
-h1, h2, h3, h4, h5, h6 {
-  margin: 0;
-  font-weight: 600;
+/* Standalone app container styles */
+.standalone-app {
+  min-height: 100vh;
+  background: var(--color-background-primary);
+  padding: var(--spacing-5);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-p {
-  margin: 0 0 1rem 0;
+.standalone-header {
+  text-align: center;
+  margin-bottom: var(--spacing-8);
+  color: var(--color-text-primary);
 }
 
-ul, ol {
-  margin: 0;
-  padding: 0;
+.standalone-header h1 {
+  font-size: var(--font-size-4xl);
+  margin-bottom: var(--spacing-2);
+  background: var(--theme-mf-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: var(--font-weight-bold);
 }
 
-button {
-  font-family: inherit;
-  cursor: pointer;
-  border: none;
-  outline: none;
+.standalone-header p {
+  font-size: var(--font-size-lg);
+  color: var(--color-text-secondary);
+  max-width: 600px;
+  margin: 0 auto;
 }
 
-button:focus-visible {
-  outline: 2px solid #3498db;
-  outline-offset: 2px;
+.standalone-content {
+  width: 100%;
+  max-width: 1000px;
 }
 
-a {
-  color: #3498db;
-  text-decoration: none;
-}
+/* Responsive design for standalone */
+@media (max-width: 768px) {
+  .standalone-app {
+    padding: var(--spacing-3);
+  }
 
-a:hover {
-  text-decoration: underline;
+  .standalone-header {
+    margin-bottom: var(--spacing-5);
+  }
+
+  .standalone-header h1 {
+    font-size: var(--font-size-3xl);
+  }
+
+  .standalone-header p {
+    font-size: var(--font-size-base);
+  }
 }
 
 /* Standalone app container styles */

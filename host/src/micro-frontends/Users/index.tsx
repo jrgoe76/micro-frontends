@@ -1,5 +1,4 @@
 import React from 'react';
-import './Users.css';
 
 interface User {
   id: number;
@@ -41,82 +40,85 @@ const Users: React.FC = () => {
   );
 
   return (
-    <div className="users-container">
-      <div className="users-header">
+    <div className="mf-container mf-container--users">
+      <div className="mf-header">
         <h1>👥 User Management System</h1>
         <p>This is another dynamically loaded micro-frontend application</p>
+        <div className="mf-badge">
+          Local Dynamic Import
+        </div>
       </div>
 
-      <div className="users-controls">
-        <div className="search-section">
-          <label htmlFor="search" className="search-label">🔍 Search Users</label>
+      <div className="mf-content">
+        <div className="mf-form-section">
+          <label htmlFor="search" className="mf-label">🔍 Search Users</label>
           <input
             id="search"
             type="text"
             placeholder="Search by name, email, or role..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="search-input"
+            className="mf-input"
           />
         </div>
 
-        <div className="add-user-section">
+        <div className="mf-form-section">
           <h3>➕ Add New User</h3>
-          <div className="add-user-form">
+          <div className="mf-form-grid">
             <input
               type="text"
               placeholder="Full Name"
               value={newUser.name}
               onChange={(e) => setNewUser({ ...newUser, name: e.target.value })}
-              className="form-input"
+              className="mf-input"
             />
             <input
               type="email"
               placeholder="Email Address"
               value={newUser.email}
               onChange={(e) => setNewUser({ ...newUser, email: e.target.value })}
-              className="form-input"
+              className="mf-input"
             />
             <select
               value={newUser.role}
               onChange={(e) => setNewUser({ ...newUser, role: e.target.value })}
-              className="form-select"
+              className="mf-select"
             >
               <option value="Developer">Developer</option>
               <option value="Designer">Designer</option>
               <option value="Manager">Manager</option>
               <option value="Analyst">Analyst</option>
             </select>
-            <button onClick={addUser} className="add-button">
+            <button onClick={addUser} className="mf-btn">
               Add User
             </button>
           </div>
         </div>
       </div>
 
-      <div className="users-content">
-        <div className="users-stats">
-          <div className="stat-item">
-            <span className="stat-label">Total Users:</span>
-            <span className="stat-value">{users.length}</span>
+      <div className="mf-content">
+        <div className="stats-grid">
+          <div className="stat-card">
+            <h3>Total Users</h3>
+            <div className="stat-number">{users.length}</div>
           </div>
-          <div className="stat-item">
-            <span className="stat-label">Filtered Results:</span>
-            <span className="stat-value">{filteredUsers.length}</span>
+          <div className="stat-card">
+            <h3>Filtered Results</h3>
+            <div className="stat-number">{filteredUsers.length}</div>
           </div>
         </div>
 
-        <div className="users-grid">
+        <div className="mf-grid mf-grid--auto-fit">
           {filteredUsers.map((user) => (
-            <div key={user.id} className="user-card">
-              <div className="user-info">
-                <h4 className="user-name">{user.name}</h4>
-                <p className="user-email">{user.email}</p>
-                <span className="user-role">{user.role}</span>
+            <div key={user.id} className="mf-item-card">
+              <div className="mf-item-info">
+                <div className="mf-item-title">{user.name}</div>
+                <div className="mf-item-subtitle">{user.email}</div>
+                <div className="mf-item-meta">{user.role}</div>
               </div>
               <button
                 onClick={() => deleteUser(user.id)}
-                className="delete-button"
+                className="mf-btn mf-btn--small mf-btn--danger"
                 aria-label={`Delete user ${user.name}`}
               >
                 🗑️
@@ -126,7 +128,7 @@ const Users: React.FC = () => {
         </div>
       </div>
 
-      <div className="users-footer">
+      <div className="mf-footer">
         <p>⚡ Dynamically loaded micro-frontend with independent state management</p>
       </div>
     </div>
