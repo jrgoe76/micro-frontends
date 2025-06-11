@@ -142,6 +142,24 @@
   background: #c0392b;
 }
 
+.timeout-metrics {
+  margin-top: 1rem;
+  padding: 1rem;
+  background: #f8f9fa;
+  border-radius: 6px;
+  border: 1px solid #dee2e6;
+}
+
+.timeout-metrics p {
+  margin: 0.5rem 0;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.timeout-metrics strong {
+  color: #333;
+}
+
 /* Fallback state styles */
 .fallback-container {
   text-align: center;
@@ -158,6 +176,43 @@
 
 .fallback-container p {
   color: #999;
+}
+
+/* Micro-frontend container animations */
+.micro-frontend-container {
+  margin-top: 2rem;
+  animation: fade-in 0.5s ease-in-out;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Smooth transitions for component visibility */
+.micro-frontend-container > div {
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.micro-frontend-container > div[style*="display: none"] {
+  opacity: 0;
+  transform: translateY(-5px);
+}
+
+.micro-frontend-container > div[style*="display: block"] {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Loading state transitions */
+.app-container {
+  animation: fade-in 0.3s ease-in-out;
 }
 
 /* Responsive design */

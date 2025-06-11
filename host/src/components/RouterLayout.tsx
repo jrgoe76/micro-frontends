@@ -3,7 +3,10 @@ import { useParams, useNavigate, useLocation } from 'react-router-dom';
 import type { AppId, MicroFrontendLoader } from '../types/index.ts';
 import Navigation from './Navigation';
 import FederationFallback from './FederationFallback';
+import EnhancedLoader from './EnhancedLoader';
+import SkeletonLoader from './SkeletonLoader';
 import { useMicroFrontendCache } from '../hooks/useMicroFrontendCache';
+import { useLoadingStates } from '../hooks/useLoadingStates';
 import './Layout.css';
 
 const RouterLayout: React.FC = () => {
@@ -53,6 +56,15 @@ const RouterLayout: React.FC = () => {
     clearCache
   } = useMicroFrontendCache();
 
+  // Use enhanced loading states
+  const {
+    startLoading,
+    completeLoading,
+    timeoutLoading,
+    isInPhase,
+    getLoadingMetrics
+  } = useLoadingStates();
+
   // Load the current app if not already cached
   useEffect(() => {
     const cachedComponent = getCachedComponent(activeApp);
@@ -60,14 +72,27 @@ const RouterLayout: React.FC = () => {
     // Only load if not already cached and not in error state and not currently loading
     if (!cachedComponent || (!cachedComponent.isLoaded && !cachedComponent.error)) {
       console.log(`📋 Loading ${activeApp} - not cached or in error state`);
+
+      // Start enhanced loading sequence
+      startLoading(activeApp);
+
       const loader = microFrontendLoaders[activeApp];
-      loadComponent(activeApp, loader);
+      loadComponent(activeApp, loader)
+        .then(() => {
+          console.log(`✅ ${activeApp} loading completed`);
+          completeLoading(activeApp);
+        })
+        .catch((error) => {
+          console.error(`❌ ${activeApp} loading failed:`, error);
+          // Error handling is managed by the cache hook
+        });
     } else if (cachedComponent.isLoaded) {
       console.log(`✅ ${activeApp} already cached and loaded`);
+      completeLoading(activeApp);
     } else if (cachedComponent.error) {
       console.log(`❌ ${activeApp} in error state: ${cachedComponent.error}`);
     }
-  }, [activeApp, getCachedComponent, loadComponent, microFrontendLoaders]);
+  }, [activeApp, getCachedComponent, loadComponent, microFrontendLoaders, startLoading, completeLoading]);
 
   // Handle app navigation via React Router
   const handleAppChange = useCallback((appId: AppId) => {
@@ -112,19 +137,63 @@ const RouterLayout: React.FC = () => {
       />
 
       <main className="main-content">
-        {/* Loading state for current app */}
+        {/* Enhanced loading states for current app */}
         {isCurrentAppLoading && (
+          <>
+            {isInPhase(activeApp, 'enhanced') && (
+              <EnhancedLoader
+                appId={activeApp}
+                appName={activeApp === 'app1' ? 'Federated Task Manager' : 'User Management System'}
+                loadingType={activeApp === 'app1' ? 'federation' : 'local'}
+                onTimeout={() => timeoutLoading(activeApp)}
+              />
+            )}
+
+            {isInPhase(activeApp, 'skeleton') && (
+              <SkeletonLoader
+                appId={activeApp}
+                appName={activeApp === 'app1' ? 'Federated Task Manager' : 'User Management System'}
+              />
+            )}
+
+            {/* Fallback to basic loading if not in enhanced phases */}
+            {!isInPhase(activeApp, 'enhanced') && !isInPhase(activeApp, 'skeleton') && (
+              <div className="app-container">
+                <div className="loading-container">
+                  <div className="loading-spinner"></div>
+                  <h2>Loading Micro-Frontend...</h2>
+                  <p>Dynamically importing {activeApp.toUpperCase()} module</p>
+                </div>
+              </div>
+            )}
+          </>
+        )}
+
+        {/* Timeout state for current app */}
+        {isInPhase(activeApp, 'timeout') && (
           <div className="app-container">
-            <div className="loading-container">
-              <div className="loading-spinner"></div>
-              <h2>Loading Micro-Frontend...</h2>
-              <p>Dynamically importing {activeApp.toUpperCase()} module</p>
+            <div className="error-container">
+              <div className="error-icon">⏰</div>
+              <h2>Loading Timeout</h2>
+              <p className="error-message">
+                The micro-frontend took too long to load. This might be due to network issues or the remote service being unavailable.
+              </p>
+              <button
+                onClick={() => handleRetry(activeApp)}
+                className="retry-button"
+              >
+                🔄 Retry Loading
+              </button>
+              <div className="timeout-metrics">
+                <p><strong>Loading Time:</strong> {getLoadingMetrics(activeApp)?.totalTime ? (getLoadingMetrics(activeApp)!.totalTime / 1000).toFixed(1) : '0'}s</p>
+                <p><strong>Type:</strong> {activeApp === 'app1' ? 'Module Federation' : 'Local Dynamic Import'}</p>
+              </div>
             </div>
           </div>
         )}
 
         {/* Error state for current app */}
-        {cachedComponent?.error && (
+        {cachedComponent?.error && !isInPhase(activeApp, 'timeout') && (
           <>
             {activeApp === 'app1' ? (
               // Use FederationFallback for App1 (Module Federation failures)

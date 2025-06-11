@@ -1,0 +1,436 @@
+.skeleton-loader {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 2rem;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.skeleton-container {
+  animation: skeleton-fade-in 0.5s ease-in-out;
+}
+
+@keyframes skeleton-fade-in {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Base skeleton element */
+.skeleton-element {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: skeleton-loading 1.5s infinite;
+  border-radius: 4px;
+}
+
+@keyframes skeleton-loading {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* Header skeletons */
+.skeleton-header {
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.skeleton-title {
+  @extend .skeleton-element;
+  height: 2rem;
+  width: 60%;
+  margin: 0 auto 1rem;
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: skeleton-loading 1.5s infinite;
+  border-radius: 4px;
+}
+
+.skeleton-subtitle {
+  @extend .skeleton-element;
+  height: 1rem;
+  width: 40%;
+  margin: 0 auto;
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: skeleton-loading 1.5s infinite;
+  border-radius: 4px;
+}
+
+/* Form skeletons */
+.skeleton-form {
+  margin-bottom: 2rem;
+}
+
+.skeleton-form-row {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.skeleton-input {
+  @extend .skeleton-element;
+  height: 2.5rem;
+  flex: 1;
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: skeleton-loading 1.5s infinite;
+  border-radius: 4px;
+}
+
+.skeleton-button {
+  @extend .skeleton-element;
+  height: 2.5rem;
+  width: 100px;
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: skeleton-loading 1.5s infinite;
+  border-radius: 4px;
+}
+
+.skeleton-button.secondary {
+  width: 80px;
+}
+
+/* Task list skeletons (App1) */
+.skeleton-task-list {
+  margin-bottom: 2rem;
+}
+
+.skeleton-task-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  margin-bottom: 0.5rem;
+}
+
+.skeleton-checkbox {
+  @extend .skeleton-element;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 3px;
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: skeleton-loading 1.5s infinite;
+}
+
+.skeleton-task-content {
+  flex: 1;
+}
+
+.skeleton-task-text {
+  @extend .skeleton-element;
+  height: 1.2rem;
+  width: 70%;
+  margin-bottom: 0.5rem;
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: skeleton-loading 1.5s infinite;
+  border-radius: 4px;
+}
+
+.skeleton-task-meta {
+  @extend .skeleton-element;
+  height: 0.8rem;
+  width: 40%;
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: skeleton-loading 1.5s infinite;
+  border-radius: 4px;
+}
+
+.skeleton-task-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.skeleton-action-button {
+  @extend .skeleton-element;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 4px;
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: skeleton-loading 1.5s infinite;
+}
+
+/* Stats skeletons (App1) */
+.skeleton-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1rem;
+}
+
+.skeleton-stat-item {
+  text-align: center;
+  padding: 1rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+}
+
+.skeleton-stat-number {
+  @extend .skeleton-element;
+  height: 2rem;
+  width: 60%;
+  margin: 0 auto 0.5rem;
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: skeleton-loading 1.5s infinite;
+  border-radius: 4px;
+}
+
+.skeleton-stat-label {
+  @extend .skeleton-element;
+  height: 1rem;
+  width: 80%;
+  margin: 0 auto;
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: skeleton-loading 1.5s infinite;
+  border-radius: 4px;
+}
+
+/* User management skeletons (App2) */
+.skeleton-controls {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.skeleton-search {
+  @extend .skeleton-element;
+  height: 2.5rem;
+  flex: 1;
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: skeleton-loading 1.5s infinite;
+  border-radius: 4px;
+}
+
+.skeleton-filter-buttons {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.skeleton-filter-button {
+  @extend .skeleton-element;
+  height: 2rem;
+  width: 60px;
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: skeleton-loading 1.5s infinite;
+  border-radius: 4px;
+}
+
+.skeleton-user-form {
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+}
+
+.skeleton-form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.skeleton-select {
+  @extend .skeleton-element;
+  height: 2.5rem;
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: skeleton-loading 1.5s infinite;
+  border-radius: 4px;
+}
+
+.skeleton-form-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-end;
+}
+
+.skeleton-user-list {
+  margin-bottom: 2rem;
+}
+
+.skeleton-user-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  margin-bottom: 0.5rem;
+}
+
+.skeleton-avatar {
+  @extend .skeleton-element;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: skeleton-loading 1.5s infinite;
+}
+
+.skeleton-user-info {
+  flex: 1;
+}
+
+.skeleton-user-name {
+  @extend .skeleton-element;
+  height: 1.2rem;
+  width: 60%;
+  margin-bottom: 0.5rem;
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: skeleton-loading 1.5s infinite;
+  border-radius: 4px;
+}
+
+.skeleton-user-email {
+  @extend .skeleton-element;
+  height: 1rem;
+  width: 80%;
+  margin-bottom: 0.5rem;
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: skeleton-loading 1.5s infinite;
+  border-radius: 4px;
+}
+
+.skeleton-user-role {
+  @extend .skeleton-element;
+  height: 0.8rem;
+  width: 40%;
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: skeleton-loading 1.5s infinite;
+  border-radius: 4px;
+}
+
+.skeleton-user-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.skeleton-pagination {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.skeleton-page-button {
+  @extend .skeleton-element;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 4px;
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: skeleton-loading 1.5s infinite;
+}
+
+.skeleton-page-button.active {
+  background: linear-gradient(90deg, #d0d0d0 25%, #c0c0c0 50%, #d0d0d0 75%);
+  background-size: 200% 100%;
+  animation: skeleton-loading 1.5s infinite;
+}
+
+/* Default content skeletons */
+.skeleton-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.skeleton-content-block {
+  padding: 1rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+}
+
+.skeleton-text-line {
+  @extend .skeleton-element;
+  height: 1rem;
+  width: 100%;
+  margin-bottom: 0.5rem;
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: skeleton-loading 1.5s infinite;
+  border-radius: 4px;
+}
+
+.skeleton-text-line.short {
+  width: 60%;
+}
+
+.skeleton-text-line.medium {
+  width: 80%;
+}
+
+.skeleton-text-line:last-child {
+  margin-bottom: 0;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .skeleton-loader {
+    padding: 1rem;
+  }
+  
+  .skeleton-controls {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .skeleton-form-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .skeleton-stats {
+    grid-template-columns: 1fr;
+  }
+  
+  .skeleton-user-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+  
+  .skeleton-user-actions {
+    align-self: flex-end;
+  }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .skeleton-element,
+  .skeleton-title,
+  .skeleton-subtitle,
+  .skeleton-input,
+  .skeleton-button,
+  .skeleton-checkbox,
+  .skeleton-task-text,
+  .skeleton-task-meta,
+  .skeleton-action-button,
+  .skeleton-stat-number,
+  .skeleton-stat-label,
+  .skeleton-search,
+  .skeleton-filter-button,
+  .skeleton-select,
+  .skeleton-avatar,
+  .skeleton-user-name,
+  .skeleton-user-email,
+  .skeleton-user-role,
+  .skeleton-page-button,
+  .skeleton-text-line {
+    animation: none;
+    background: #f0f0f0;
+  }
+}
