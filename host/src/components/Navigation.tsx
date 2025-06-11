@@ -11,7 +11,7 @@ interface NavigationProps {
 const Navigation: React.FC<NavigationProps> = ({ activeApp, onAppChange }) => {
   const navigationItems: NavigationItem[] = [
     { id: 'app1', label: 'App 1', path: '/app1' },
-    { id: 'app2', label: 'App 2', path: '/app2' }
+    { id: 'users', label: 'Users', path: '/users' }
   ];
 
   return (

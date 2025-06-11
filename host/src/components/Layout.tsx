@@ -25,10 +25,10 @@ const Layout: React.FC = () => {
           throw error; // Re-throw to trigger error state
         });
     },
-    // Keep App2 as local dynamic import for comparison
-    app2: () => {
-      console.log('📦 Loading App2 via local dynamic import...');
-      return import('../micro-frontends/App2/index.tsx');
+    // Keep Users as local dynamic import for comparison
+    users: () => {
+      console.log('📦 Loading Users via local dynamic import...');
+      return import('../micro-frontends/Users/index.tsx');
     }
   }), []); // Empty dependency array since these imports never change
 
@@ -166,20 +166,20 @@ const Layout: React.FC = () => {
             return null;
           })()}
 
-          {/* App2 - always render if loaded to preserve state */}
+          {/* Users - always render if loaded to preserve state */}
           {(() => {
-            const app2Cache = getCachedComponent('app2');
-            if (app2Cache?.isLoaded && app2Cache.component) {
-              const App2Component = app2Cache.component;
-              const shouldShow = activeApp === 'app2' && !app2Cache.error && !isLoading('app2');
+            const usersCache = getCachedComponent('users');
+            if (usersCache?.isLoaded && usersCache.component) {
+              const UsersComponent = usersCache.component;
+              const shouldShow = activeApp === 'users' && !usersCache.error && !isLoading('users');
               return (
                 <div
-                  key="app2-container"
+                  key="users-container"
                   style={{
                     display: shouldShow ? 'block' : 'none'
                   }}
                 >
-                  <App2Component />
+                  <UsersComponent />
                 </div>
               );
             }

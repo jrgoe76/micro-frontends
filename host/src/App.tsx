@@ -13,7 +13,7 @@ const App: React.FC = () => {
 
         {/* Micro-frontend routes */}
         <Route path="/app1" element={<RouterLayout />} />
-        <Route path="/app2" element={<RouterLayout />} />
+        <Route path="/users" element={<RouterLayout />} />
 
         {/* Catch-all route for 404 */}
         <Route path="*" element={<NotFound />} />

@@ -1,4 +1,4 @@
-.app2-container {
+.users-container {
   max-width: 900px;
   margin: 0 auto;
   padding: 2rem;
@@ -8,24 +8,24 @@
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
 }
 
-.app2-header {
+.users-header {
   text-align: center;
   margin-bottom: 2rem;
 }
 
-.app2-header h1 {
+.users-header h1 {
   font-size: 2.5rem;
   margin-bottom: 0.5rem;
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
-.app2-header p {
+.users-header p {
   font-size: 1.1rem;
   opacity: 0.9;
   margin: 0;
 }
 
-.app2-controls {
+.users-controls {
   display: grid;
   gap: 2rem;
   margin-bottom: 2rem;
@@ -131,7 +131,7 @@
   transform: translateY(-1px);
 }
 
-.app2-content {
+.users-content {
   margin-bottom: 2rem;
 }
 
@@ -227,25 +227,25 @@
   border-color: rgba(255, 0, 0, 0.5);
 }
 
-.app2-footer {
+.users-footer {
   text-align: center;
   padding-top: 1rem;
   border-top: 1px solid rgba(255, 255, 255, 0.2);
   opacity: 0.8;
 }
 
-.app2-footer p {
+.users-footer p {
   margin: 0;
   font-size: 0.9rem;
 }
 
 /* Responsive design */
 @media (max-width: 768px) {
-  .app2-container {
+  .users-container {
     padding: 1rem;
   }
-  
-  .app2-header h1 {
+
+  .users-header h1 {
     font-size: 2rem;
   }
   

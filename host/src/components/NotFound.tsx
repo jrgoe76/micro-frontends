@@ -36,11 +36,11 @@ const NotFound: React.FC = () => {
                 </div>
               </Link>
               
-              <Link to="/app2" className="route-link">
+              <Link to="/users" className="route-link">
                 <div className="route-item">
                   <span className="route-icon">📦</span>
                   <div className="route-details">
-                    <span className="route-path">/app2</span>
+                    <span className="route-path">/users</span>
                     <span className="route-description">User Management System</span>
                   </div>
                 </div>

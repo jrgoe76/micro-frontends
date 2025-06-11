@@ -1,5 +1,5 @@
 import React from 'react';
-import './App2.css';
+import './Users.css';
 
 interface User {
   id: number;
@@ -9,7 +9,7 @@ interface User {
 }
 
 // This represents a different micro-frontend application
-const App2: React.FC = () => {
+const Users: React.FC = () => {
   const [users, setUsers] = React.useState<User[]>([
     { id: 1, name: 'Alice Johnson', email: 'alice@example.com', role: 'Developer' },
     { id: 2, name: 'Bob Smith', email: 'bob@example.com', role: 'Designer' },
@@ -41,13 +41,13 @@ const App2: React.FC = () => {
   );
 
   return (
-    <div className="app2-container">
-      <div className="app2-header">
+    <div className="users-container">
+      <div className="users-header">
         <h1>👥 User Management System</h1>
         <p>This is another dynamically loaded micro-frontend application</p>
       </div>
 
-      <div className="app2-controls">
+      <div className="users-controls">
         <div className="search-section">
           <label htmlFor="search" className="search-label">🔍 Search Users</label>
           <input
@@ -94,7 +94,7 @@ const App2: React.FC = () => {
         </div>
       </div>
 
-      <div className="app2-content">
+      <div className="users-content">
         <div className="users-stats">
           <div className="stat-item">
             <span className="stat-label">Total Users:</span>
@@ -126,11 +126,11 @@ const App2: React.FC = () => {
         </div>
       </div>
 
-      <div className="app2-footer">
+      <div className="users-footer">
         <p>⚡ Dynamically loaded micro-frontend with independent state management</p>
       </div>
     </div>
   );
 };
 
-export default App2;
+export default Users;

@@ -18,8 +18,8 @@ const RouterLayout: React.FC = () => {
   const activeApp: AppId = useMemo(() => {
     if (location.pathname === '/' || location.pathname === '/app1' || appId === 'app1') {
       return 'app1';
-    } else if (location.pathname === '/app2' || appId === 'app2') {
-      return 'app2';
+    } else if (location.pathname === '/users' || appId === 'users') {
+      return 'users';
     }
     // Default to app1 for any unrecognized routes
     return 'app1';
@@ -41,10 +41,10 @@ const RouterLayout: React.FC = () => {
           throw error; // Re-throw to trigger error state
         });
     },
-    // Keep App2 as local dynamic import for comparison
-    app2: () => {
-      console.log('📦 Loading App2 via local dynamic import...');
-      return import('../micro-frontends/App2/index.tsx');
+    // Keep Users as local dynamic import for comparison
+    users: () => {
+      console.log('📦 Loading Users via local dynamic import...');
+      return import('../micro-frontends/Users/index.tsx');
     }
   }), []); // Empty dependency array since these imports never change
 
@@ -99,8 +99,8 @@ const RouterLayout: React.FC = () => {
     console.log(`🧭 Navigating to ${appId} via React Router`);
     if (appId === 'app1') {
       navigate('/app1');
-    } else if (appId === 'app2') {
-      navigate('/app2');
+    } else if (appId === 'users') {
+      navigate('/users');
     }
   }, [navigate]);
 
@@ -254,20 +254,20 @@ const RouterLayout: React.FC = () => {
             return null;
           })()}
 
-          {/* App2 - always render if loaded to preserve state */}
+          {/* Users - always render if loaded to preserve state */}
           {(() => {
-            const app2Cache = getCachedComponent('app2');
-            if (app2Cache?.isLoaded && app2Cache.component) {
-              const App2Component = app2Cache.component;
-              const shouldShow = activeApp === 'app2' && !app2Cache.error && !isLoading('app2');
+            const usersCache = getCachedComponent('users');
+            if (usersCache?.isLoaded && usersCache.component) {
+              const UsersComponent = usersCache.component;
+              const shouldShow = activeApp === 'users' && !usersCache.error && !isLoading('users');
               return (
                 <div
-                  key="app2-container"
+                  key="users-container"
                   style={{
                     display: shouldShow ? 'block' : 'none'
                   }}
                 >
-                  <App2Component />
+                  <UsersComponent />
                 </div>
               );
             }
