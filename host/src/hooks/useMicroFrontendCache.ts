@@ -13,8 +13,8 @@ export const useMicroFrontendCache = () => {
   
   // Track loading states for each app
   const [loadingStates, setLoadingStates] = useState<Record<AppId, boolean>>({
-    app1: false,
-    app2: false
+    tasks: false,
+    users: false
   });
 
   /**

@@ -214,7 +214,7 @@ export const useLoadingStates = (): UseLoadingStatesReturn => {
       totalTime: state.elapsedTime,
       phase: state.phase,
       appId,
-      loadingType: appId === 'app1' ? 'federation' : 'local'
+      loadingType: appId === 'tasks' ? 'federation' : 'local'
     };
   }, [loadingStates]);
 

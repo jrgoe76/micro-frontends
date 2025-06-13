@@ -62,8 +62,8 @@ const SkeletonLoader: React.FC<SkeletonLoaderProps> = ({ appId, appName }) => {
         </div>
       </div>
     );
-  } else if (appId === 'app2') {
-    // Skeleton for User Management (App2)
+  } else if (appId === 'users') {
+    // Skeleton for User Management (Users)
     return (
       <div className="skeleton-loader" aria-label={`Loading ${appName} skeleton`}>
         <div className="skeleton-container">
