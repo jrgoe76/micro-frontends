@@ -18,7 +18,9 @@ const Navigation: React.FC<NavigationProps> = ({ activeApp, onAppChange }) => {
     <nav className="navigation">
       <div className="nav-container">
         <div className="nav-brand">
-          <h2>Micro-Frontends</h2>
+          <NavLink to="/" className="nav-brand-link">
+            <h2>Welcome</h2>
+          </NavLink>
         </div>
         <ul className="nav-menu">
           {navigationItems.map((item) => (

@@ -1,8 +1,8 @@
 .navigation {
-  background-color: #2c3e50;
-  color: white;
+  background-color: var(--color-neutral-100);
+  color: var(--color-text-primary);
   padding: 0;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid var(--color-neutral-200);
   position: sticky;
   top: 0;
   z-index: 1000;
@@ -14,15 +14,25 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 1rem;
-  height: 60px;
+  padding: 0 var(--spacing-3);
+  height: 50px;
+}
+
+.nav-brand-link {
+  text-decoration: none;
+  color: inherit;
 }
 
 .nav-brand h2 {
   margin: 0;
-  font-size: 1.5rem;
-  font-weight: 600;
-  color: #ecf0f1;
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+  transition: color var(--transition-fast);
+}
+
+.nav-brand-link:hover h2 {
+  color: var(--color-primary-600);
 }
 
 .nav-menu {
@@ -30,7 +40,7 @@
   list-style: none;
   margin: 0;
   padding: 0;
-  gap: 0.5rem;
+  gap: var(--spacing-1);
 }
 
 .nav-item {
@@ -40,29 +50,29 @@
 .nav-link {
   background: none;
   border: none;
-  color: #bdc3c7;
+  color: var(--color-text-secondary);
   text-decoration: none;
-  padding: 0.75rem 1.5rem;
-  border-radius: 4px;
-  font-size: 1rem;
-  font-weight: 500;
+  padding: var(--spacing-2) var(--spacing-3);
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: all var(--transition-fast);
   display: block;
 }
 
 .nav-link:hover {
-  background-color: #34495e;
-  color: #ecf0f1;
+  background-color: var(--color-neutral-200);
+  color: var(--color-text-primary);
 }
 
 .nav-link.active {
-  background-color: #3498db;
+  background-color: var(--color-primary-500);
   color: white;
 }
 
 .nav-link.active:hover {
-  background-color: #2980b9;
+  background-color: var(--color-primary-600);
 }
 
 /* Responsive design */
@@ -70,13 +80,13 @@
   .nav-container {
     flex-direction: column;
     height: auto;
-    padding: 1rem;
+    padding: var(--spacing-3);
   }
-  
+
   .nav-brand {
-    margin-bottom: 1rem;
+    margin-bottom: var(--spacing-2);
   }
-  
+
   .nav-menu {
     width: 100%;
     justify-content: center;

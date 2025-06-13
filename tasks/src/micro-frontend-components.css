@@ -8,34 +8,26 @@
 .mf-container {
   max-width: 900px;
   margin: 0 auto;
-  padding: var(--spacing-5);
+  padding: var(--spacing-4);
   border-radius: var(--radius-lg);
-  color: var(--color-text-inverse);
-  box-shadow: var(--shadow-lg);
+  background: var(--color-neutral-50);
+  color: var(--color-text-primary);
+  border: 1px solid var(--color-neutral-200);
   position: relative;
-  overflow: hidden;
 }
 
-.mf-container::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: inherit;
-  opacity: 0.95;
-  z-index: -1;
-}
+/* Remove the pseudo-element overlay for cleaner appearance */
 
 /* Unified Theme for All Micro-Frontends */
 .mf-container--tasks,
 .mf-container--users {
-  background: var(--theme-mf-primary);
+  background: var(--color-neutral-50);
+  color: var(--color-text-primary);
 }
 
 .mf-container--host {
-  background: var(--theme-host-primary);
+  background: var(--color-background-primary);
+  color: var(--color-text-primary);
 }
 
 /* === MICRO-FRONTEND HEADER === */
@@ -84,11 +76,10 @@
 /* === GLASS MORPHISM COMPONENTS === */
 
 .glass-card {
-  background: var(--theme-mf-glass-light);
-  padding: var(--spacing-4);
+  background: var(--color-neutral-100);
+  padding: var(--spacing-3);
   border-radius: var(--radius-md);
-  backdrop-filter: blur(10px);
-  border: 1px solid var(--theme-mf-border);
+  border: 1px solid var(--color-neutral-200);
   transition: all var(--transition-base);
 }
 
@@ -112,12 +103,11 @@
 }
 
 .stat-card {
-  background: var(--theme-mf-glass-light);
-  padding: var(--spacing-4);
+  background: var(--color-neutral-100);
+  padding: var(--spacing-3);
   border-radius: var(--radius-md);
   text-align: center;
-  backdrop-filter: blur(10px);
-  border: 1px solid var(--theme-mf-border);
+  border: 1px solid var(--color-neutral-200);
   transition: all var(--transition-base);
 }
 
@@ -276,11 +266,10 @@
 /* === ITEM CARDS === */
 
 .mf-item-card {
-  background: var(--theme-mf-glass-light);
-  padding: var(--spacing-4);
+  background: var(--color-neutral-100);
+  padding: var(--spacing-3);
   border-radius: var(--radius-md);
-  backdrop-filter: blur(10px);
-  border: 1px solid var(--theme-mf-border);
+  border: 1px solid var(--color-neutral-200);
   display: flex;
   justify-content: space-between;
   align-items: flex-start;

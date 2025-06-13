@@ -1,5 +1,6 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Welcome from './components/Welcome';
 import RouterLayout from './components/RouterLayout';
 import NotFound from './components/NotFound';
 import './App.css';
@@ -8,8 +9,8 @@ const App: React.FC = () => {
   return (
     <Router>
       <Routes>
-        {/* Root path redirects to tasks */}
-        <Route path="/" element={<Navigate to="/tasks" replace />} />
+        {/* Welcome page at root path */}
+        <Route path="/" element={<Welcome />} />
 
         {/* Micro-frontend routes */}
         <Route path="/tasks" element={<RouterLayout />} />

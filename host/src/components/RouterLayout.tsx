@@ -16,7 +16,7 @@ const RouterLayout: React.FC = () => {
 
   // Determine active app from URL, default to tasks for root path
   const activeApp: AppId = useMemo(() => {
-    if (location.pathname === '/' || location.pathname === '/tasks' || appId === 'tasks') {
+    if (location.pathname === '/tasks' || appId === 'tasks') {
       return 'tasks';
     } else if (location.pathname === '/users' || appId === 'users') {
       return 'users';
