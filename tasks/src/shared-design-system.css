@@ -171,7 +171,7 @@
   --theme-mf-glass-light: rgba(255, 255, 255, 0.06);
   --theme-mf-glass-medium: rgba(255, 255, 255, 0.09);
   --theme-mf-glass-strong: rgba(255, 255, 255, 0.12);
-  --theme-mf-border: rgba(255, 255, 255, 0.15);
+  --theme-mf-border: #cbd5e1;
 
   /* Host Theme (for navigation and layout) */
   --theme-host-primary: linear-gradient(135deg, var(--color-primary-600) 0%, var(--color-primary-800) 100%);
