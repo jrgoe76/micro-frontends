@@ -1,7 +1,7 @@
-- Use TypeScript naming conventions
-- Use React hooks and functional components
-- Use React Router for navigation
-- Use Vite for building and serving
-- Use Module Federation for micro-frontends
-- Use ESLint for linting
-- Use Prettier for formatting
+# Design Preferences
+- User prefers minimalistic design systems with square corners (no border-radius), extra light backgrounds (from a 5-color palette), and maximum layout compactness for professional dashboard aesthetics.
+- User prefers unified design systems across micro-frontends with shared CSS variables/design tokens.
+- User wants consistent styling between standalone and federated modes.
+
+# Application Startup
+- The micro-frontends application startup sequence requires building and serving Tasks remote on port 5081 first (npm run build && npm run preview), then building and starting the Host application on port 5080 (npm run build && npm run dev) to consume the remote via Module Federation.
