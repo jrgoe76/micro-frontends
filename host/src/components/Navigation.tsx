@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { useAuth } from '../auth/AuthContext';
+import { useAuth } from '../hooks/useAuth';
 import type { AppId, NavigationItem } from '../types/index.ts';
 import './Navigation.css';
 

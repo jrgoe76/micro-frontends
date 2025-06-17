@@ -38,44 +38,6 @@ export interface ComponentCache {
 
 export type MicroFrontendLoader = () => Promise<DynamicModule>;
 
-// Authentication types
-export interface AuthUser {
-  id: string;
-  username: string;
-  email?: string;
-  firstName?: string;
-  lastName?: string;
-  roles: string[];
-}
-
-export interface AuthTokens {
-  token: string;
-  refreshToken: string;
-  idToken: string;
-}
-
-export interface AuthState {
-  isAuthenticated: boolean;
-  isLoading: boolean;
-  user: AuthUser | null;
-  tokens: AuthTokens | null;
-  error: string | null;
-}
-
-export interface KeycloakConfig {
-  url: string;
-  realm: string;
-  clientId: string;
-}
-
-export interface AuthContextType extends AuthState {
-  login: () => Promise<void>;
-  logout: () => Promise<void>;
-  refreshToken: () => Promise<boolean>;
-  hasRole: (role: string) => boolean;
-  hasAnyRole: (roles: string[]) => boolean;
-}
-
 // Types for Module Federation
 export interface FederatedModule {
   default: React.ComponentType;

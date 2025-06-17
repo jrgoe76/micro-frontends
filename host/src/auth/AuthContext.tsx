@@ -1,8 +1,9 @@
-import React, { createContext, useContext, useEffect, useState, useCallback } from 'react';
+import React, { createContext, useEffect, useState, useCallback } from 'react';
 import { KeycloakWrapper } from './KeycloakWrapper';
 import { keycloakConfig, keycloakInitOptions } from '../config/keycloak';
 import { testKeycloakConnectivity, logKeycloakDiagnostics } from '../utils/keycloakTest';
-import type { AuthContextType, AuthState } from '../types/index.ts';
+import type { AuthenticationState } from '../security/AuthenticationState';
+import type { SecurityContext } from '../security/SecurityContext';
 
 // Singleton instance of KeycloakWrapper to prevent multiple initializations
 let keycloakWrapperInstance: KeycloakWrapper | null = null;
@@ -15,16 +16,10 @@ const getKeycloakWrapper = (): KeycloakWrapper => {
 };
 
 // Create the authentication context
-const AuthContext = createContext<AuthContextType | null>(null);
+const AuthContext = createContext<SecurityContext | null>(null);
 
-// Custom hook to use the auth context
-export const useAuth = (): AuthContextType => {
-  const context = useContext(AuthContext);
-  if (!context) {
-    throw new Error('useAuth must be used within an AuthProvider');
-  }
-  return context;
-};
+// Export the context for use in the useAuth hook
+export { AuthContext };
 
 interface AuthProviderProps {
   children: React.ReactNode;
@@ -35,7 +30,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const [keycloakWrapper] = useState(() => getKeycloakWrapper());
   
   // Authentication state
-  const [authState, setAuthState] = useState<AuthState>({
+  const [authState, setAuthState] = useState<AuthenticationState>({
     isAuthenticated: false,
     isLoading: true,
     user: null,
@@ -228,7 +223,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   }, [keycloakWrapper]);
 
   // Context value
-  const contextValue: AuthContextType = {
+  const contextValue: SecurityContext = {
     ...authState,
     login,
     logout,

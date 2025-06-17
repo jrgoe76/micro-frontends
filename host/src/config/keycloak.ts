@@ -1,8 +1,8 @@
-import type { KeycloakConfig } from '../types/index.ts';
+import type { IdPConfig } from '../security/IdPConfig';
 
 // Keycloak configuration
 // In a real application, these values should come from environment variables
-export const keycloakConfig: KeycloakConfig = {
+export const keycloakConfig: IdPConfig = {
   url: import.meta.env.VITE_KEYCLOAK_URL || 'http://localhost:8080',
   realm: import.meta.env.VITE_KEYCLOAK_REALM || 'master',
   clientId: import.meta.env.VITE_KEYCLOAK_CLIENT_ID || 'micro-frontends-client'

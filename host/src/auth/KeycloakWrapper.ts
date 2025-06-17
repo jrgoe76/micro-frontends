@@ -1,5 +1,7 @@
 import Keycloak from 'keycloak-js';
-import type { KeycloakConfig, AuthUser, AuthTokens } from '../types/index.ts';
+import type { User } from '../security/User';
+import type { TokenBag } from '../security/TokenBag';
+import type { IdPConfig } from '../security/IdPConfig';
 
 // Interface for parsed Keycloak token
 interface ParsedToken {
@@ -28,7 +30,7 @@ export class KeycloakWrapper {
   private initialized = false;
   private initializationPromise: Promise<boolean> | null = null;
 
-  constructor(config: KeycloakConfig) {
+  constructor(config: IdPConfig) {
     this.keycloak = new Keycloak({
       url: config.url,
       realm: config.realm,
@@ -121,7 +123,7 @@ export class KeycloakWrapper {
   /**
    * Get current user information
    */
-  getUser(): AuthUser | null {
+  getUser(): User | null {
     if (!this.isAuthenticated() || !this.keycloak.tokenParsed) {
       return null;
     }
@@ -140,7 +142,7 @@ export class KeycloakWrapper {
   /**
    * Get current tokens
    */
-  getTokens(): AuthTokens | null {
+  getTokens(): TokenBag | null {
     if (!this.isAuthenticated()) {
       return null;
     }
