@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { AuthProvider } from './auth/AuthContext';
+import { SecurityProvider } from './security';
 import { useAuth } from './hooks/useAuth';
 import Welcome from './components/Welcome';
 import RouterLayout from './components/RouterLayout';
@@ -50,11 +50,11 @@ const AppRoutes: React.FC = () => {
 // Main App component with providers
 const App: React.FC = () => {
   return (
-    <AuthProvider>
+    <SecurityProvider>
       <Router>
         <AppRoutes />
       </Router>
-    </AuthProvider>
+    </SecurityProvider>
   );
 };
 

@@ -1,3 +1,4 @@
+import { createContext } from 'react';
 import type { AuthenticationState } from './AuthenticationState';
 
 /**
@@ -10,3 +11,8 @@ export interface SecurityContext extends AuthenticationState {
   hasRole: (role: string) => boolean;
   hasAnyRole: (roles: string[]) => boolean;
 }
+
+/**
+ * Security context for managing authentication state and methods
+ */
+export const securityContext = createContext<SecurityContext | null>(null);
