@@ -1,10 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { useAuth } from '../hooks/useAuth';
+import { useSecurity } from '../security';
 import './Welcome.css';
 
 const Welcome: React.FC = () => {
-  const { isAuthenticated, isLoading, user, login } = useAuth();
+  const { isAuthenticated, isLoading, user, login } = useSecurity();
 
   const handleLogin = async () => {
     try {
@@ -26,7 +26,7 @@ const Welcome: React.FC = () => {
             <h1>Welcome to this cool React SPA Micro-Frontends Demo!!!</h1>
             <h2>
               {isAuthenticated && user
-                ? `Welcome back, ${user.firstName || user.username}!`
+                ? `Welcome back, ${user.fullName()}!`
                 : 'Explore Our Micro-Frontend Architecture'
               }
             </h2>
@@ -61,11 +61,11 @@ const Welcome: React.FC = () => {
                       </div>
                     </Link>
 
-                    <Link to="/users" className="mf-link">
+                    <Link to="/contacts" className="mf-link">
                       <div className="mf-card">
                         <span className="mf-icon">📦</span>
                         <div className="mf-details">
-                          <span className="mf-title">User Management</span>
+                          <span className="mf-title">Contact Management</span>
                           <span className="mf-description">Local Dynamic Import</span>
                           <span className="mf-tech">Dynamic Import + React 19.1</span>
                         </div>
@@ -88,7 +88,7 @@ const Welcome: React.FC = () => {
                     <div className="mf-card mf-card--disabled">
                       <span className="mf-icon">🔒</span>
                       <div className="mf-details">
-                        <span className="mf-title">User Management</span>
+                        <span className="mf-title">Contact Management</span>
                         <span className="mf-description">Authentication Required</span>
                         <span className="mf-tech">Please log in to access</span>
                       </div>
@@ -135,8 +135,8 @@ const Welcome: React.FC = () => {
                   <Link to="/tasks" className="primary-button">
                     🌐 Explore Tasks (Federation)
                   </Link>
-                  <Link to="/users" className="secondary-button">
-                    📦 Explore Users (Local)
+                  <Link to="/contacts" className="secondary-button">
+                    📦 Explore Contacts (Local)
                   </Link>
                 </>
               ) : (

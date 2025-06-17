@@ -5,3 +5,6 @@
 
 # Application Startup
 - The micro-frontends application startup sequence requires building and serving Tasks remote on port 5081 first (npm run build && npm run preview), then building and starting the Host application on port 5080 (npm run build && npm run dev) to consume the remote via Module Federation.
+
+# TypeScript Architecture
+- Organize the project structure following domain-driven design principles

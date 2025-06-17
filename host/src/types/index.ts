@@ -1,6 +1,6 @@
 // Types for our micro-frontends application
 
-export type AppId = 'tasks' | 'users';
+export type AppId = 'tasks' | 'contacts';
 
 export interface MicroFrontendApp {
   id: AppId;

@@ -14,7 +14,7 @@ const Navigation: React.FC<NavigationProps> = ({ activeApp, onAppChange }) => {
 
   const navigationItems: NavigationItem[] = [
     { id: 'tasks', label: 'Tasks', path: '/tasks' },
-    { id: 'users', label: 'Users', path: '/users' }
+    { id: 'contacts', label: 'Contacts', path: '/contacts' }
   ];
 
   const handleLogout = async () => {
@@ -52,9 +52,9 @@ const Navigation: React.FC<NavigationProps> = ({ activeApp, onAppChange }) => {
           )}
 
           {isAuthenticated && (
-            <div className="nav-user">
-              <span className="nav-user-info">
-                👋 {user?.firstName || user?.username}
+            <div className="nav-contact">
+              <span className="nav-contact-info">
+                👋 {user?.fullName()}
               </span>
               <button
                 onClick={handleLogout}

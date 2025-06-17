@@ -81,14 +81,14 @@
   background-color: var(--color-primary-600);
 }
 
-/* User info and logout */
-.nav-user {
+/* Contact info and logout */
+.nav-contact {
   display: flex;
   align-items: center;
   gap: var(--spacing-2);
 }
 
-.nav-user-info {
+.nav-contact-info {
   font-size: var(--font-size-sm);
   color: var(--color-text-secondary);
   font-weight: var(--font-weight-medium);
@@ -135,7 +135,7 @@
     justify-content: center;
   }
 
-  .nav-user {
+  .nav-contact {
     justify-content: center;
   }
 }

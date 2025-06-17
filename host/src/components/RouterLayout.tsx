@@ -18,8 +18,8 @@ const RouterLayout: React.FC = () => {
   const activeApp: AppId = useMemo(() => {
     if (location.pathname === '/tasks' || appId === 'tasks') {
       return 'tasks';
-    } else if (location.pathname === '/users' || appId === 'users') {
-      return 'users';
+    } else if (location.pathname === '/contacts' || appId === 'contacts') {
+      return 'contacts';
     }
     // Default to tasks for any unrecognized routes
     return 'tasks';
@@ -41,10 +41,10 @@ const RouterLayout: React.FC = () => {
           throw error; // Re-throw to trigger error state
         });
     },
-    // Keep Users as local dynamic import for comparison
-    users: () => {
-      console.log('📦 Loading Users via local dynamic import...');
-      return import('../micro-frontends/Users/index.tsx');
+    // Keep Contacts as local dynamic import for comparison
+    contacts: () => {
+      console.log('📦 Loading Contacts via local dynamic import...');
+      return import('../features/contacts/Contacts.tsx');
     }
   }), []); // Empty dependency array since these imports never change
 
@@ -99,8 +99,8 @@ const RouterLayout: React.FC = () => {
     console.log(`🧭 Navigating to ${appId} via React Router`);
     if (appId === 'tasks') {
       navigate('/tasks');
-    } else if (appId === 'users') {
-      navigate('/users');
+    } else if (appId === 'contacts') {
+      navigate('/contacts');
     }
   }, [navigate]);
 
@@ -143,7 +143,7 @@ const RouterLayout: React.FC = () => {
             {isInPhase(activeApp, 'enhanced') && (
               <EnhancedLoader
                 appId={activeApp}
-                appName={activeApp === 'tasks' ? 'Federated Task Manager' : 'User Management System'}
+                appName={activeApp === 'tasks' ? 'Federated Task Manager' : 'Contact Management System'}
                 loadingType={activeApp === 'tasks' ? 'federation' : 'local'}
                 onTimeout={() => timeoutLoading(activeApp)}
               />
@@ -152,7 +152,7 @@ const RouterLayout: React.FC = () => {
             {isInPhase(activeApp, 'skeleton') && (
               <SkeletonLoader
                 appId={activeApp}
-                appName={activeApp === 'tasks' ? 'Federated Task Manager' : 'User Management System'}
+                appName={activeApp === 'tasks' ? 'Federated Task Manager' : 'Contact Management System'}
               />
             )}
 
@@ -254,20 +254,20 @@ const RouterLayout: React.FC = () => {
             return null;
           })()}
 
-          {/* Users - always render if loaded to preserve state */}
+          {/* Contacts - always render if loaded to preserve state */}
           {(() => {
-            const usersCache = getCachedComponent('users');
-            if (usersCache?.isLoaded && usersCache.component) {
-              const UsersComponent = usersCache.component;
-              const shouldShow = activeApp === 'users' && !usersCache.error && !isLoading('users');
+            const contactsCache = getCachedComponent('contacts');
+            if (contactsCache?.isLoaded && contactsCache.component) {
+              const ContactsComponent = contactsCache.component;
+              const shouldShow = activeApp === 'contacts' && !contactsCache.error && !isLoading('contacts');
               return (
                 <div
-                  key="users-container"
+                  key="contacts-container"
                   style={{
                     display: shouldShow ? 'block' : 'none'
                   }}
                 >
-                  <UsersComponent />
+                  <ContactsComponent />
                 </div>
               );
             }

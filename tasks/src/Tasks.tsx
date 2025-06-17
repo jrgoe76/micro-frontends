@@ -2,6 +2,7 @@ import React from 'react';
 
 // This is our federated micro-frontend component
 const Tasks: React.FC = () => {
+  
   const [count, setCount] = React.useState(0);
   const [todos, setTodos] = React.useState<string[]>([
     'Learn Module Federation',
@@ -12,6 +13,10 @@ const Tasks: React.FC = () => {
   const addTodo = () => {
     const newTodo = `Federated task ${Date.now()}`;
     setTodos([...todos, newTodo]);
+  };
+
+  const removeTodo = (index: number) => {
+    setTodos(todos.filter((_, i) => i !== index));
   };
 
   return (
@@ -58,7 +63,7 @@ const Tasks: React.FC = () => {
                   <div className="mf-item-title">{todo}</div>
                 </div>
                 <button
-                  onClick={() => setTodos(todos.filter((_, i) => i !== index))}
+                  onClick={() => removeTodo(index)}
                   className="mf-btn mf-btn--small mf-btn--danger"
                   aria-label={`Delete task: ${todo}`}
                 >

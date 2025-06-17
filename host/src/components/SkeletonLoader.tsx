@@ -62,8 +62,8 @@ const SkeletonLoader: React.FC<SkeletonLoaderProps> = ({ appId, appName }) => {
         </div>
       </div>
     );
-  } else if (appId === 'users') {
-    // Skeleton for User Management (Users)
+  } else if (appId === 'contacts') {
+    // Skeleton for Contacts Management (Contacts)
     return (
       <div className="skeleton-loader" aria-label={`Loading ${appName} skeleton`}>
         <div className="skeleton-container">
@@ -83,8 +83,8 @@ const SkeletonLoader: React.FC<SkeletonLoaderProps> = ({ appId, appName }) => {
             </div>
           </div>
 
-          {/* User form skeleton */}
-          <div className="skeleton-user-form">
+          {/* Contact form skeleton */}
+          <div className="skeleton-contact-form">
             <div className="skeleton-form-grid">
               <div className="skeleton-input"></div>
               <div className="skeleton-input"></div>
@@ -97,17 +97,17 @@ const SkeletonLoader: React.FC<SkeletonLoaderProps> = ({ appId, appName }) => {
             </div>
           </div>
 
-          {/* User list skeleton */}
-          <div className="skeleton-user-list">
+          {/* Contact list skeleton */}
+          <div className="skeleton-contact-list">
             {[...Array(5)].map((_, index) => (
-              <div key={index} className="skeleton-user-item">
+              <div key={index} className="skeleton-contact-item">
                 <div className="skeleton-avatar"></div>
-                <div className="skeleton-user-info">
-                  <div className="skeleton-user-name"></div>
-                  <div className="skeleton-user-email"></div>
-                  <div className="skeleton-user-role"></div>
+                <div className="skeleton-contact-info">
+                  <div className="skeleton-contact-name"></div>
+                  <div className="skeleton-contact-email"></div>
+                  <div className="skeleton-contact-profession"></div>
                 </div>
-                <div className="skeleton-user-actions">
+                <div className="skeleton-contact-actions">
                   <div className="skeleton-action-button"></div>
                   <div className="skeleton-action-button"></div>
                 </div>

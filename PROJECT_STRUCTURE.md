@@ -11,7 +11,7 @@ This project has been reorganized to better separate the host application from r
 │   │   ├── components/             # Host components
 │   │   ├── hooks/                  # Host hooks
 │   │   ├── types/                  # TypeScript types
-│   │   └── micro-frontends/        # Local micro-frontends (Users)
+│   │   └── features/               # Local features (Contacts)
 │   ├── package.json                # Host dependencies
 │   ├── vite.config.ts              # Host Vite configuration
 │   ├── tsconfig.json               # Host TypeScript config
@@ -50,7 +50,7 @@ npm run preview
 ## URL Routing
 
 - **`/` or `/tasks`**: Federated Task Manager (Module Federation)
-- **`/users`**: User Management System (Local Dynamic Import)
+- **`/contacts`**: Contact Management System (Local Dynamic Import)
 - **`/*`**: 404 Not Found page with navigation links
 
 ## Key Features

@@ -135,7 +135,11 @@ export class SecurityService {
       email: tokenParsed.email,
       firstName: tokenParsed.given_name,
       lastName: tokenParsed.family_name,
-      roles: this.getRoles()
+      roles: this.getRoles(),
+      
+      fullName(): string {
+        return `${this.firstName} ${this.lastName}`;
+      }
     };
   }
 

@@ -20,7 +20,7 @@
 
 /* Unified Theme for All Micro-Frontends */
 .mf-container--tasks,
-.mf-container--users {
+.mf-container--contacts {
   background: var(--theme-mf-primary);
 }
 
@@ -180,8 +180,8 @@
 }
 
 .mf-select option {
-  background: var(--color-neutral-800);
-  color: var(--color-text-inverse);
+  background: var(--theme-mf-glass-light);
+  color: var(--theme-mf-text);
 }
 
 .mf-label {

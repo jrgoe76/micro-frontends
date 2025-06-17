@@ -157,7 +157,7 @@
   animation: skeleton-loading 1.5s infinite;
 }
 
-/* Stats skeletons (App1) */
+/* Stats skeletons */
 .skeleton-stats {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
@@ -193,7 +193,7 @@
   border-radius: 4px;
 }
 
-/* User management skeletons (App2) */
+/* Contact management skeletons */
 .skeleton-controls {
   display: flex;
   gap: 1rem;
@@ -226,7 +226,7 @@
   border-radius: 4px;
 }
 
-.skeleton-user-form {
+.skeleton-contact-form {
   margin-bottom: 2rem;
   padding: 1.5rem;
   border: 1px solid #e0e0e0;
@@ -255,11 +255,11 @@
   justify-content: flex-end;
 }
 
-.skeleton-user-list {
+.skeleton-contact-list {
   margin-bottom: 2rem;
 }
 
-.skeleton-user-item {
+.skeleton-contact-item {
   display: flex;
   align-items: center;
   gap: 1rem;
@@ -279,11 +279,11 @@
   animation: skeleton-loading 1.5s infinite;
 }
 
-.skeleton-user-info {
+.skeleton-contact-info {
   flex: 1;
 }
 
-.skeleton-user-name {
+.skeleton-contact-name {
   @extend .skeleton-element;
   height: 1.2rem;
   width: 60%;
@@ -294,7 +294,7 @@
   border-radius: 4px;
 }
 
-.skeleton-user-email {
+.skeleton-contact-email {
   @extend .skeleton-element;
   height: 1rem;
   width: 80%;
@@ -305,7 +305,7 @@
   border-radius: 4px;
 }
 
-.skeleton-user-role {
+.skeleton-contact-profession {
   @extend .skeleton-element;
   height: 0.8rem;
   width: 40%;
@@ -315,7 +315,7 @@
   border-radius: 4px;
 }
 
-.skeleton-user-actions {
+.skeleton-contact-actions {
   display: flex;
   gap: 0.5rem;
 }
@@ -397,13 +397,13 @@
     grid-template-columns: 1fr;
   }
   
-  .skeleton-user-item {
+  .skeleton-contact-item {
     flex-direction: column;
     align-items: flex-start;
     gap: 0.5rem;
   }
   
-  .skeleton-user-actions {
+  .skeleton-contact-actions {
     align-self: flex-end;
   }
 }
@@ -425,10 +425,10 @@
   .skeleton-filter-button,
   .skeleton-select,
   .skeleton-avatar,
-  .skeleton-user-name,
-  .skeleton-user-email,
-  .skeleton-user-role,
-  .skeleton-page-button,
+  .skeleton-contact-name,
+  .skeleton-contact-email,
+  .skeleton-contact-profession,
+  .skeleton-contact-button,
   .skeleton-text-line {
     animation: none;
     background: #f0f0f0;

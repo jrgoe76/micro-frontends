@@ -32,7 +32,7 @@ const AppRoutes: React.FC = () => {
         }
       />
       <Route
-        path="/users"
+        path="/contacts"
         element={
           <ProtectedRoute>
             <RouterLayout />
