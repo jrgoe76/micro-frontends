@@ -1,6 +1,6 @@
 import { useContext } from 'react';
-import type { SecurityContext } from '../security';
-import { securityContext } from '../security';
+import type { SecurityContext } from './SecurityContext';
+import { securityContext } from './SecurityContext';
 
 /**
  * Custom hook to use the authentication context
@@ -8,10 +8,12 @@ import { securityContext } from '../security';
  * @returns SecurityContext - The security context containing auth state and methods
  * @throws Error if used outside of AuthProvider
  */
-export const useAuth = (): SecurityContext => {
+export const useSecurity = (): SecurityContext => {
   const context = useContext(securityContext);
+  
   if (!context) {
-    throw new Error('useAuth must be used within an AuthProvider');
+    throw new Error('useSecurity must be used within an SecurityProvider');
   }
+
   return context;
 };

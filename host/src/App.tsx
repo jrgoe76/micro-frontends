@@ -1,7 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { SecurityProvider } from './security';
-import { useAuth } from './hooks/useAuth';
+import { SecurityProvider, useSecurity } from './security';
 import Welcome from './components/Welcome';
 import RouterLayout from './components/RouterLayout';
 import NotFound from './components/NotFound';
@@ -11,7 +10,7 @@ import './App.css';
 
 // Inner App component that uses auth context
 const AppRoutes: React.FC = () => {
-  const { isLoading } = useAuth();
+  const { isLoading } = useSecurity();
 
   // Show loading screen while authentication is being initialized
   if (isLoading) {

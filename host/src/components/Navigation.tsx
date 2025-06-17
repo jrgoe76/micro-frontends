@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { useAuth } from '../hooks/useAuth';
+import { useSecurity } from '../security';
 import type { AppId, NavigationItem } from '../types/index.ts';
 import './Navigation.css';
 
@@ -10,7 +10,7 @@ interface NavigationProps {
 }
 
 const Navigation: React.FC<NavigationProps> = ({ activeApp, onAppChange }) => {
-  const { isAuthenticated, user, logout } = useAuth();
+  const { isAuthenticated, user, logout } = useSecurity();
 
   const navigationItems: NavigationItem[] = [
     { id: 'tasks', label: 'Tasks', path: '/tasks' },

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Navigate, useLocation } from 'react-router-dom';
-import { useAuth } from '../hooks/useAuth';
+import { useSecurity } from '../security';
 
 interface ProtectedRouteProps {
   children: React.ReactNode;
@@ -13,7 +13,7 @@ const ProtectedRoute: React.FC<ProtectedRouteProps> = ({
   requiredRoles = [], 
   fallbackPath = '/' 
 }) => {
-  const { isAuthenticated, isLoading, hasAnyRole } = useAuth();
+  const { isAuthenticated, isLoading, hasAnyRole } = useSecurity();
   const location = useLocation();
 
   // Show loading while authentication is being checked
