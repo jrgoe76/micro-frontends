@@ -26,6 +26,8 @@ interface ParsedToken {
  * Provides type-safe methods and handles common authentication operations
  */
 export class SecurityService {
+  private static instance: SecurityService | null = null;
+
   private keycloak: Keycloak;
   private initialized = false;
   private initializationPromise: Promise<boolean> | null = null;
@@ -36,6 +38,13 @@ export class SecurityService {
       realm: config.realm,
       clientId: config.clientId
     });
+  }
+
+  public static create(idPConfig: IdPConfig): SecurityService {
+    if (!this.instance) {
+      this.instance = new SecurityService(idPConfig);
+    }
+    return this.instance;
   }
 
   /**
@@ -89,15 +98,15 @@ export class SecurityService {
       // Check if it's a network/connection error
       if (error instanceof Error) {
         if (error.message.includes('Network Error') ||
-            error.message.includes('Failed to fetch') ||
-            error.message.includes('ECONNREFUSED')) {
+          error.message.includes('Failed to fetch') ||
+          error.message.includes('ECONNREFUSED')) {
           throw new Error('Unable to connect to Keycloak server. Please ensure Keycloak is running and accessible.');
         }
 
         // Check for CORS errors
         if (error.message.includes('CORS') ||
-            error.message.includes('Access-Control-Allow-Origin') ||
-            error.message.includes('Cross-Origin')) {
+          error.message.includes('Access-Control-Allow-Origin') ||
+          error.message.includes('Cross-Origin')) {
           throw new Error('CORS error: Please configure Keycloak client with Web Origins: http://localhost:5080. See KEYCLOAK_SETUP.md for details.');
         }
       }
@@ -136,7 +145,7 @@ export class SecurityService {
       firstName: tokenParsed.given_name,
       lastName: tokenParsed.family_name,
       roles: this.getRoles(),
-      
+
       fullName(): string {
         return `${this.firstName} ${this.lastName}`;
       }
@@ -170,7 +179,7 @@ export class SecurityService {
     const realmRoles = tokenParsed.realm_access?.roles || [];
     const clientId = this.keycloak.clientId || '';
     const clientRoles = tokenParsed.resource_access?.[clientId]?.roles || [];
-    
+
     return [...realmRoles, ...clientRoles];
   }
 
@@ -279,7 +288,7 @@ export class SecurityService {
     if (!this.keycloak.tokenParsed) {
       return 0;
     }
-    
+
     const tokenParsed = this.keycloak.tokenParsed as ParsedToken;
     const now = Math.ceil(Date.now() / 1000);
     return (tokenParsed.exp || 0) - now;

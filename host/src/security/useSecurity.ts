@@ -12,7 +12,7 @@ export const useSecurity = (): SecurityContext => {
   const context = useContext(securityContext);
   
   if (!context) {
-    throw new Error('useSecurity must be used within an SecurityProvider');
+    throw new Error('useSecurity must be used within a SecurityProvider');
   }
 
   return context;

@@ -5,23 +5,13 @@ import { SecurityService, securityContext } from './';
 import { keycloakConfig, keycloakInitOptions } from '../config/keycloak';
 import { testKeycloakConnectivity, logKeycloakDiagnostics } from '../utils/keycloakTest';
 
-// Singleton instance of SecurityService to prevent multiple initializations
-let securityServiceInstance: SecurityService | null = null;
-
-const getSecurityService = (): SecurityService => {
-  if (!securityServiceInstance) {
-    securityServiceInstance = new SecurityService(keycloakConfig);
-  }
-  return securityServiceInstance;
-};
-
 interface SecurityProviderProps {
   children: React.ReactNode;
 }
 
 export const SecurityProvider: React.FC<SecurityProviderProps> = ({ children }) => {
   // Initialize SecurityService using singleton
-  const [securityService] = useState(() => getSecurityService());
+  const [securityService] = useState(() => SecurityService.create(keycloakConfig));
   
   // Authentication state
   const [authState, setAuthState] = useState<AuthenticationState>({

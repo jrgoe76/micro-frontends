@@ -13,6 +13,7 @@ const ProtectedRoute: React.FC<ProtectedRouteProps> = ({
   requiredRoles = [], 
   fallbackPath = '/' 
 }) => {
+  
   const { isAuthenticated, isLoading, hasAnyRole } = useSecurity();
   const location = useLocation();
 
